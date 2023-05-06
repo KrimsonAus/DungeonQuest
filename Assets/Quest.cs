@@ -19,7 +19,12 @@ public class Quest : MonoBehaviour
     [Space(5)]
     public GameObject ObjectToInteractWith;
 
+    [Space(10)]
+    [Header("After Quest Compeletion")]
+    public bool DialogueSetPlus;
 
+    public NPC NPCToSetPlus;
+    [HideInInspector] public bool Completed;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +34,24 @@ public class Quest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Type == 0 && ObjectToDestroy != null)
+        {
+            if (ObjectToDestroy.GetComponent<WorldObject>().Health <= 0)
+            {
+                Destroy(ObjectToDestroy);
+                ObjectToDestroy = null;
+            }
+        }
+
+        if (Completed)
+        {
+            if (DialogueSetPlus)
+            {
+                NPCToSetPlus.set += 1;
+                DialogueSetPlus = false;
+                NPCToSetPlus.UpdateSetArray();
+                NPCToSetPlus.Dialogue = true;
+            }
+        }
     }
 }

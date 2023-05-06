@@ -20,11 +20,13 @@ public class Player : MonoBehaviour
     public GameObject Nothing;
 
     [HideInInspector] public Animator Animator;
+    [HideInInspector] public QuestManager QuestManager;
     // Start is called before the first frame update
     void Start()
     {
         ActiveItems = new GameObject[Items.Length];
         Animator = GetComponent<Animator>();
+        QuestManager = FindObjectOfType<QuestManager>();
     }
 
     // Update is called once per frame

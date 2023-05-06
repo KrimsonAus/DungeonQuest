@@ -11,16 +11,22 @@ public class NPC : MonoBehaviour
     [HideInInspector] public GameObject Player;
     [HideInInspector] public TMPro.TextMeshProUGUI DiagText;
     public GameObject[] Dialogues;
+    public GameObject[] SetDialogues;
     bool DialogueActive;
     public int set=0;
     public int id=0;
     public Dialogue ActiveDialogue;
+    int noofsets;
+    int earliestSet=999;
     // Start is called before the first frame update
     void Start()
     {
         Diag = GameObject.FindGameObjectWithTag("Dialogue");
         DiagText = Diag.GetComponentInChildren<TMPro.TextMeshProUGUI>();
         Player = GameObject.FindGameObjectWithTag("Player");
+        SetDialogues = new GameObject[Dialogues.Length];
+
+        UpdateSetArray();
     }
 
     // Update is called once per frame
@@ -30,13 +36,14 @@ public class NPC : MonoBehaviour
         {
             DiagText.text = ActiveDialogue.DialogueText;
         }
+
     }
     private void OnMouseDown()
     {
         print(gameObject.name + " is pressed");
         if (Dialogue)
         {
-            if (id != Dialogues.Length - 1)
+            if (id != SetDialogues.Length - 1)
             {
                 if (DialogueActive)
                 {
@@ -55,7 +62,7 @@ public class NPC : MonoBehaviour
                 Diag.SetActive(true);
                 DialogueActive = true;
             }
-            ActiveDialogue = Dialogues[set + id].GetComponent<Dialogue>();
+            ActiveDialogue = Dialogues[id].GetComponent<Dialogue>();
 
             if (ActiveDialogue != null)
             {
@@ -80,6 +87,31 @@ public class NPC : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    public void UpdateSetArray()
+    {
+        earliestSet = 999;
+        SetDialogues = new GameObject[0];
+        SetDialogues = new GameObject[Dialogues.Length];
+        for (int i = 0; i < Dialogues.Length; i++)
+        {
+            if (set == Dialogues[i].GetComponent<Dialogue>().DialogueSetID)
+            {
+                if (earliestSet==999)
+                {
+                    earliestSet = i;
+                }
+                noofsets += 1;
+                SetDialogues[i] = Dialogues[i];
+            }
+        }
+
+        SetDialogues = new GameObject[noofsets];
+        for (int i = earliestSet; i < noofsets; i++)
+        {
+            SetDialogues[i] = Dialogues[i];
         }
     }
 }
