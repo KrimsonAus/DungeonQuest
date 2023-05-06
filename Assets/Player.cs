@@ -18,10 +18,13 @@ public class Player : MonoBehaviour
     public GameObject CamPos;
 
     public GameObject Nothing;
+
+    [HideInInspector] public Animator Animator;
     // Start is called before the first frame update
     void Start()
     {
         ActiveItems = new GameObject[Items.Length];
+        Animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -76,6 +79,15 @@ public class Player : MonoBehaviour
             Destroy(ActiveItems[InventorySelected]);
             InventorySelected += 1;
             ItemActive=false;
+        }
+
+        if (GetComponent<NavMeshAgent>().hasPath)
+        {
+            Animator.SetBool("Walk", true);
+        }
+        else
+        {
+            Animator.SetBool("Walk", false);
         }
     }
 }

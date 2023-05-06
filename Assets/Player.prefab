@@ -4207,6 +4207,8 @@ MonoBehaviour:
   - {fileID: 2581279255004538352, guid: f5d31a2d30c1ad04a8c572dae2c413c9, type: 3}
   ActiveItems: []
   CamPos: {fileID: 0}
+  Nothing: {fileID: 2581279255004538352, guid: f5d31a2d30c1ad04a8c572dae2c413c9, type: 3}
+  Animator: {fileID: 0}
 --- !u!114 &5143211388876281577
 MonoBehaviour:
   m_ObjectHideFlags: 0
