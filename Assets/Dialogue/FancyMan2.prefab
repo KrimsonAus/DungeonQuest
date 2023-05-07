@@ -47,7 +47,9 @@ MonoBehaviour:
   DialogueText: 'If you wish to know how to cut trees then here: take this axe and
     use it on the tree behind you and then return to me!'
   DialogueSetID: 0
-  DialogueID: 2
+  DialogueID: 3
   GiveItems: 1
   ItemsToGive:
   - {fileID: 8732368570703294045, guid: 20141ef08f406364aa25fd0c177815eb, type: 3}
+  activateQuest: 1
+  QuestToActivate: {fileID: 0}

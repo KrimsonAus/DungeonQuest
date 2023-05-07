@@ -46,4 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueText: Hello There!
   DialogueSetID: 0
-  DialogueID: 0
+  DialogueID: 1
+  GiveItems: 0
+  ItemsToGive: []
+  activateQuest: 0
+  QuestToActivate: {fileID: 0}

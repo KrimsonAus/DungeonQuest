@@ -62,7 +62,6 @@ public class NPC : MonoBehaviour
                 Diag.SetActive(true);
                 DialogueActive = true;
             }
-            ActiveDialogue = SetDialogues[id].GetComponent<Dialogue>();
 
             if (ActiveDialogue != null)
             {
@@ -87,6 +86,13 @@ public class NPC : MonoBehaviour
                     }
                 }
             }
+            
+            ActiveDialogue = SetDialogues[id].GetComponent<Dialogue>();
+            if (ActiveDialogue.activateQuest)
+            {
+                ActiveDialogue.QuestToActivate.active = true;
+            }
+            
         }
     }
 

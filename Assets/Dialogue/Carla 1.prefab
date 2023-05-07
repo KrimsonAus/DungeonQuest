@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3047644469898137725}
   - component: {fileID: 5106271125742394434}
   m_Layer: 0
-  m_Name: FancyMan4
+  m_Name: Carla 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,12 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6223ad757bc27fe45b85ca83932fcfcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DialogueText: Now with that wood, go to to the crafting tutor by the house next
-    to the tree. They'll teach you to make something usefull from that wood.
-  DialogueSetID: 1
-  DialogueID: 5
+  DialogueText: I'm the crafting tutor, if you have the logs please give them to
+    me.
+  DialogueSetID: 0
+  DialogueID: 1
   GiveItems: 0
-  ItemsToGive:
-  - {fileID: 8732368570703294045, guid: 20141ef08f406364aa25fd0c177815eb, type: 3}
-  activateQuest: 0
-  QuestToActivate: {fileID: 0}
+  ItemsToGive: []

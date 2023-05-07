@@ -46,7 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueText: Good Job on cutting down that tree!
   DialogueSetID: 1
-  DialogueID: 3
-  GiveItems: 1
+  DialogueID: 4
+  GiveItems: 0
   ItemsToGive:
   - {fileID: 8732368570703294045, guid: 20141ef08f406364aa25fd0c177815eb, type: 3}
+  activateQuest: 0
+  QuestToActivate: {fileID: 0}

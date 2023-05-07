@@ -47,6 +47,8 @@ MonoBehaviour:
   DialogueText: Welcome to Tutor land! Here you can interact with various tutors
     before embarking to the main land.
   DialogueSetID: 0
-  DialogueID: 1
+  DialogueID: 2
   GiveItems: 0
   ItemsToGive: []
+  activateQuest: 0
+  QuestToActivate: {fileID: 0}

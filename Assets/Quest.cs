@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Quest : MonoBehaviour
 {
+    public bool active;
     [Header("Base Settings")]
     public int ID;
     [TextAreaAttribute(5, 10)]
@@ -34,12 +35,15 @@ public class Quest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Type == 0 && ObjectToDestroy != null)
+        if (active)
         {
-            if (ObjectToDestroy.GetComponent<WorldObject>().Health <= 0)
+            if (Type == 0 && ObjectToDestroy != null)
             {
-                Destroy(ObjectToDestroy);
-                ObjectToDestroy = null;
+                if (ObjectToDestroy.GetComponent<WorldObject>().Health <= 0)
+                {
+                    Destroy(ObjectToDestroy);
+                    ObjectToDestroy = null;
+                }
             }
         }
 

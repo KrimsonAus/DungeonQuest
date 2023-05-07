@@ -46,4 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueText: I am Don Chione! I own this great island!
   DialogueSetID: 0
-  DialogueID: 1
+  DialogueID: 2
+  GiveItems: 0
+  ItemsToGive: []
+  activateQuest: 0
+  QuestToActivate: {fileID: 0}

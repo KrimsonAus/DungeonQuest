@@ -10,4 +10,6 @@ public class Dialogue : MonoBehaviour
     public int DialogueID;
     public bool GiveItems;
     public GameObject[] ItemsToGive;
+    public bool activateQuest;
+    public Quest QuestToActivate;
 }
