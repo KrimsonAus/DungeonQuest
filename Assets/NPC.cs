@@ -16,8 +16,8 @@ public class NPC : MonoBehaviour
     public int set=0;
     public int id=0;
     public Dialogue ActiveDialogue;
-    int noofsets;
-    int earliestSet=999;
+    public int noofsets;
+    public int earliestSet=999;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,7 +62,7 @@ public class NPC : MonoBehaviour
                 Diag.SetActive(true);
                 DialogueActive = true;
             }
-            ActiveDialogue = Dialogues[id].GetComponent<Dialogue>();
+            ActiveDialogue = SetDialogues[id].GetComponent<Dialogue>();
 
             if (ActiveDialogue != null)
             {
@@ -92,8 +92,9 @@ public class NPC : MonoBehaviour
 
     public void UpdateSetArray()
     {
+        int k=0;
         earliestSet = 999;
-        SetDialogues = new GameObject[0];
+        noofsets = 0;
         SetDialogues = new GameObject[Dialogues.Length];
         for (int i = 0; i < Dialogues.Length; i++)
         {
@@ -109,9 +110,13 @@ public class NPC : MonoBehaviour
         }
 
         SetDialogues = new GameObject[noofsets];
-        for (int i = earliestSet; i < noofsets; i++)
+
+        print("earliest: " + earliestSet);
+        print("Number of: " + noofsets);
+        for (int i = earliestSet; i < noofsets + earliestSet; i++)
         {
-            SetDialogues[i] = Dialogues[i];
+            SetDialogues[k] = Dialogues[i];
+            k += 1;
         }
     }
 }

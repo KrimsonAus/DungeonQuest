@@ -10,6 +10,8 @@ public class WorldObject : MonoBehaviour
     public GameObject[] ResourcesToGive;
     public bool RequireSpecificItem;
     public GameObject[] ObjectsRequired;
+    public bool RequireSpecificItemInHand;
+    public GameObject ObjectsRequiredInHand;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,13 @@ public class WorldObject : MonoBehaviour
         if (!RequireSpecificItem)
         {
             Health -= 1;
+        }
+        else
+        {
+            if (FindObjectOfType<Player>().ActiveItems[FindObjectOfType<Player>().InventorySelected] == ObjectsRequiredInHand)
+            {
+                Health -= 1;
+            }
         }
     }
 }

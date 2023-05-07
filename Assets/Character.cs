@@ -19,6 +19,10 @@ public class Character : MonoBehaviour
         {
             Selected = 0;
         }
+        if (Selected < 0)
+        {
+            Selected = Char.Length - 1;
+        }
         for (int i = 0; i < Char.Length; i++)
         {
             Char[i].SetActive(false);
