@@ -50,3 +50,9 @@ MonoBehaviour:
   DialogueID: 1
   GiveItems: 0
   ItemsToGive: []
+  activateQuest: 0
+  QuestToActivate: {fileID: 0}
+  RequireSpecificItem: 0
+  ObjectsRequired: 
+  RequireSpecificItemInHand: 1
+  ObjectRequiredInHand: 1

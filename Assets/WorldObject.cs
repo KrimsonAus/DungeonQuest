@@ -9,9 +9,9 @@ public class WorldObject : MonoBehaviour
     public int Health;
     public GameObject[] ResourcesToGive;
     public bool RequireSpecificItem;
-    public GameObject[] ObjectsRequired;
+    public int[] ObjectsRequired;
     public bool RequireSpecificItemInHand;
-    public GameObject ObjectsRequiredInHand;
+    public int ObjectRequiredInHand;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,15 +26,18 @@ public class WorldObject : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!RequireSpecificItem)
+        if (Vector3.Distance(transform.position, FindObjectOfType<Player>().transform.position)<5)
         {
-            Health -= 1;
-        }
-        else
-        {
-            if (FindObjectOfType<Player>().ActiveItems[FindObjectOfType<Player>().InventorySelected] == ObjectsRequiredInHand)
+            if (!RequireSpecificItem && !RequireSpecificItemInHand)
             {
                 Health -= 1;
+            }
+            if (RequireSpecificItemInHand && !RequireSpecificItem)
+            {
+                if (FindObjectOfType<Player>().ActiveItems[FindObjectOfType<Player>().InventorySelected].GetComponent<InventoryObject>().ID == ObjectRequiredInHand)
+                {
+                    Health -= 1;
+                }
             }
         }
     }

@@ -12,4 +12,9 @@ public class Dialogue : MonoBehaviour
     public GameObject[] ItemsToGive;
     public bool activateQuest;
     public Quest QuestToActivate;
+    [Header("Requirements")]
+    public bool RequireSpecificItem;
+    public int[] ObjectsRequired;
+    public bool RequireSpecificItemInHand;
+    public int ObjectRequiredInHand;
 }

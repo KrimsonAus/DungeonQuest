@@ -41,9 +41,9 @@ public class NPC : MonoBehaviour
     private void OnMouseDown()
     {
         print(gameObject.name + " is pressed");
-        if (Dialogue)
+        if (Dialogue && Vector3.Distance(transform.position, FindObjectOfType<Player>().transform.position)<5)
         {
-            if (id != SetDialogues.Length - 1)
+            if (id < SetDialogues.Length - 1)
             {
                 if (DialogueActive)
                 {
@@ -57,6 +57,7 @@ public class NPC : MonoBehaviour
                 Dialogue = false;
                 Diag.SetActive(false);
             }
+
             if (!DialogueActive && Dialogue)
             {
                 Diag.SetActive(true);
