@@ -27,7 +27,7 @@ public class Dialogue : MonoBehaviour
 
     public void Update()
     {
-        if(RequireSpecificItemInHand)
+        if(RequireSpecificItemInHand && FindObjectOfType<Player>().ActiveItems[FindObjectOfType<Player>().InventorySelected]!=null)
         {
             if (FindObjectOfType<Player>().ActiveItems[FindObjectOfType<Player>().InventorySelected].GetComponent<InventoryObject>().ID == ObjectRequiredInHand)
             {
