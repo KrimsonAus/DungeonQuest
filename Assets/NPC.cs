@@ -18,6 +18,8 @@ public class NPC : MonoBehaviour
     public Dialogue ActiveDialogue;
     public int noofsets;
     public int earliestSet=999;
+
+    bool qror;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,13 +49,42 @@ public class NPC : MonoBehaviour
             {
                 if (DialogueActive)
                 {
-                    id += 1;
+                    if (ActiveDialogue.RequireSpecificItem || ActiveDialogue.RequireSpecificItemInHand)
+                    {
+                        if (ActiveDialogue.RequireSpecificItemInHand)
+                        {
+                            if (FindObjectOfType<Player>().ActiveItems[FindObjectOfType<Player>().InventorySelected].GetComponent<InventoryObject>().ID == ActiveDialogue.ObjectRequiredInHand)
+                            {
+
+                                id += 1;
+                            }
+                            else
+                            { 
+                                Diag.SetActive(false);
+                                DialogueActive = false;
+                                qror = true;
+                            }
+                        }
+                        else
+                        {
+
+                            id += 1;
+                        }
+                    }
+                    else
+                    {
+                        id += 1;
+                    }
                 }
 
-                if (!DialogueActive && Dialogue)
+                if (!DialogueActive && Dialogue && !qror)
                 {
                     Diag.SetActive(true);
                     DialogueActive = true;
+                }
+                if (qror)
+                {
+                    qror = false;
                 }
             }
             else
