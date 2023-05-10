@@ -17,4 +17,26 @@ public class Dialogue : MonoBehaviour
     public int[] ObjectsRequired;
     public bool RequireSpecificItemInHand;
     public int ObjectRequiredInHand;
+
+    string textBackup;
+
+    public void Start()
+    {
+        textBackup = DialogueText;
+    }
+
+    public void Update()
+    {
+        if(RequireSpecificItemInHand)
+        {
+            if (FindObjectOfType<Player>().ActiveItems[FindObjectOfType<Player>().InventorySelected].GetComponent<InventoryObject>().ID == ObjectRequiredInHand)
+            {
+                DialogueText = textBackup;
+            }
+            else
+            {
+                DialogueText = "Sorry but you dont have the required item, please return when you do.";
+            }
+        }
+    }
 }

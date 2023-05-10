@@ -79,6 +79,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Destroy(ActiveItems[InventorySelected]);
+            ActiveItems[InventorySelected] = Nothing;
             InventorySelected += 1;
             ItemActive=false;
         }

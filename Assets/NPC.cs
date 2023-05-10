@@ -40,7 +40,7 @@ public class NPC : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        print(gameObject.name + " is pressed");
+        print(gameObject.name + " is pressed"); 
         if (Dialogue && Vector3.Distance(transform.position, FindObjectOfType<Player>().transform.position)<5)
         {
             if (id < SetDialogues.Length - 1)
@@ -49,20 +49,43 @@ public class NPC : MonoBehaviour
                 {
                     id += 1;
                 }
+
+                if (!DialogueActive && Dialogue)
+                {
+                    Diag.SetActive(true);
+                    DialogueActive = true;
+                }
             }
             else
             {
+                if(ActiveDialogue.RequireSpecificItem || ActiveDialogue.RequireSpecificItemInHand)
+                {
+                    if (ActiveDialogue.RequireSpecificItemInHand)
+                    {
+                        if (FindObjectOfType<Player>().ActiveItems[FindObjectOfType<Player>().InventorySelected].GetComponent<InventoryObject>().ID == ActiveDialogue.ObjectRequiredInHand)
+                        {
+
+                        }
+                        else
+                        {
+                            DialogueActive = false;
+                        }
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+                    Dialogue = false;
+                    DialogueActive = false;
+                }
+
                 id = 0;
-                DialogueActive = false;
-                Dialogue = false;
                 Diag.SetActive(false);
             }
 
-            if (!DialogueActive && Dialogue)
-            {
-                Diag.SetActive(true);
-                DialogueActive = true;
-            }
 
             if (ActiveDialogue != null)
             {
